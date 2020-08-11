@@ -1,0 +1,132 @@
+{
+  "manage_Branches": [
+    {
+      "id": "1",
+      "Branch_Name": "IT",
+      "Branch_Code": "05",
+      "Address": "qw"
+    },
+    {
+      "id": "2",
+      "Branch_Name": "cs",
+      "Branch_Code": "06",
+      "Address": "qw"
+    },
+    {
+      "Branch_Name": "naeem",
+      "Branch_Code": 444,
+      "Address": "ajajaj",
+      "id": "6Q42-NI"
+    }
+  ],
+  "manage_Employees": [
+    {
+      "id": "1",
+      "Branch_Name": "IT",
+      "Branch_Code": "05",
+      "Address": "qw"
+    },
+    {
+      "branch": "naeem",
+      "name": "bashir",
+      "address": "hsshhs",
+      "hourlyRate": 777,
+      "yearlySalary": 777,
+      "phoneNo": "44655",
+      "employNo": 8886,
+      "role": "888",
+      "id": "W2Y43Uh"
+    },
+    {
+      "first_name": "naeem",
+      "last_name": "nsnsn",
+      "sin_no": 888,
+      "address": "78888",
+      "pay_type": "Full",
+      "yearly_salary": 777,
+      "phone_number": "7778",
+      "employee_category": "Sr.Collector",
+      "id": "9dzOQ85"
+    },
+    {
+      "first_name": "naeem",
+      "last_name": "bashir",
+      "sin_no": 45,
+      "address": "jhelum",
+      "pay_type": "Full",
+      "yearly_salary": 1222,
+      "phone_number": "03054530899",
+      "employee_category": "Collector",
+      "id": "kOxXCLF"
+    },
+    {
+      "id": "KEB2W4e"
+    },
+    {
+      "first_name": "baee",
+      "last_name": "shshhs",
+      "sin_no": 7778,
+      "address": "hdhdh",
+      "pay_type": "Full",
+      "yearly_salary": 788,
+      "phone_number": "4445",
+      "employee_category": "Sr.Collector",
+      "id": "4VLSmwF"
+    },
+    {
+      "first_name": "nddndn",
+      "last_name": "",
+      "sin_no": "",
+      "address": "",
+      "pay_type": "",
+      "yearly_salary": "",
+      "phone_number": "",
+      "employee_category": "",
+      "id": "icyNbJY"
+    },
+    {
+      "branch": "",
+      "name": "",
+      "address": "",
+      "hourlyRate": "",
+      "yearlySalary": "",
+      "phoneNo": "",
+      "employNo": "",
+      "role": "",
+      "id": "Ri5isgK"
+    },
+    {
+      "branch": "",
+      "name": "",
+      "address": "",
+      "hourlyRate": "",
+      "yearlySalary": "",
+      "phoneNo": "",
+      "employNo": "",
+      "role": "",
+      "id": "WhCx3e6"
+    },
+    {
+      "branch": "",
+      "name": "",
+      "address": "",
+      "hourlyRate": "",
+      "yearlySalary": "",
+      "phoneNo": "",
+      "employNo": "",
+      "role": "",
+      "id": "ncaEbs6"
+    },
+    {
+      "branch": "",
+      "name": "",
+      "address": "",
+      "hourlyRate": "",
+      "yearlySalary": "",
+      "phoneNo": "",
+      "employNo": "",
+      "role": "",
+      "id": "pMcj1Hk"
+    }
+  ]
+}

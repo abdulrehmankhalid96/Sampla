@@ -1,0 +1,100 @@
+<button class=" mb-2" nbButton status="success" (click)='visiable()'>+Add Branch</button>
+<div class="row animated fadeIn" *ngIf='!isCollapsed'>
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Branches</nb-card-header>
+      <nb-card-body>
+        <form #employe="ngForm" ngNativeValidate (ngSubmit)="onClickSubmit(employe.value)">
+          <div class="row">
+            
+              <div class="col-6 form-group">
+                  <label for="exampleInputPassword1" class="label">From Date</label> 
+                  <div class="input-group">
+                   <input nbInput fullWidth type="date"  name="date" (change)="selectDate($event)"  [ngModel]="curDate | date:'yyyy-MM-dd'"  >
+                </div>
+              </div>
+              <div class="col-6 form-group">
+                  <label for="exampleInputPassword1" class="label">To Date</label> 
+                  <div class="input-group">
+                   <input nbInput fullWidth type="date"  name="date" (change)="selectDate($event)"  [ngModel]="curDate | date:'yyyy-MM-dd'"  >
+                </div>
+              </div>
+         </div>
+         <div class="row">
+            <div class="col-6 form-group">
+                <label for="exampleInputPassword1" class="label">Branches Type </label>
+               
+                <select nbInput class="custom-select" name="branch_name" (change)='selectList($event)' [(ngModel)]='listId' >
+                  <option  disabled value="undefined">Select Branch</option>
+                  <option *ngFor='let branch of branchesList.data;' [ngValue]='branch.branch_id'>{{branch.branch_name}}</option>
+                </select>
+                
+              </div>
+
+         </div>
+          
+          <button type="submit" nbButton status="danger"  style="float: right;" (click)="hide()">Cancel</button>
+          <button type="submit" class=" mr-2" nbButton status="success" style="float:right" >Submit</button>
+        </form>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  </div>
+
+  <!-- ===update==== -->
+  
+  <!-- =====table===== -->
+
+<nb-card> 
+      <nb-card-body>
+        <div class="row justify-content-between">
+          <div class="col-3">
+          <label class="search-label" for="search">Search:</label>
+          <input nbInput id="search" [(ngModel)]="searchText" class="search-input">
+        </div>
+        
+        <div class="col-2 align-self-center">
+          <select nbInput class="custom-select" (change)="selectitem($event)" >
+              <option  selected>3</option>
+              <option *ngFor="let item of selectItem">{{item}}</option>
+            </select>
+            </div>
+            </div>
+          <table  class="table">
+              <thead>
+                <tr>
+                  
+                  <th scope="col">Sr#No</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Total Days</th>
+                  <th scope="col">Hours</th>
+                <th scope="col">Details </th>
+               
+                </tr>
+              </thead>
+              <tbody>
+                <!-- <tr  *ngFor='let emply of data.data | filter:searchText | paginate: { itemsPerPage:itemNo, currentPage: p } ;let i = index' >
+                  
+                  <td >{{ i+1 }} </td>
+                  <td>{{emply.branch_name}}</td>
+                  <td>{{emply.branch_code}}</td>
+                  <td>{{emply.branch_address}}</td>
+                  <td ><a><i (click)='editfunction(emply)' class="fas fa-edit mr-2"></i></a><a><i class="fas fa-trash-alt mr-3" (click)='delete_fun(emply.branch_id)'></i></a></td>
+                </tr> -->
+                
+                
+              </tbody>
+             
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </nb-card-body>
+      
+    </nb-card> 
+    
+
+
+
+
+
+
+    

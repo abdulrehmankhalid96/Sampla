@@ -1,0 +1,148 @@
+<button class=" mb-2" nbButton status="success" (click)='visiable()'>+Attendance</button>
+<div class="row animated fadeIn" *ngIf='!isCollapsed'>
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Attendance</nb-card-header>
+      <nb-card-body>
+         
+            <form  #emp="ngForm" >
+               
+          <div class="row">
+              <div class="col-6 form-group">
+                  <label for="exampleInputPassword1" class="label">Date</label> 
+                  <div class="input-group">
+                   <input nbInput fullWidth type="date"  name="date" (change)="selectDate($event)"  [ngModel]="curDate | date:'yyyy-MM-dd'"  >
+                </div>
+              </div>
+            <div class="col-6 form-group">
+              <label for="exampleInputPassword1" class="label">Branch </label>
+             
+              <select nbInput class="custom-select" name="branch_name" (change)='selectList($event)' [(ngModel)]='listId' >
+                <option  disabled value="undefined">Select Branch</option>
+                <option *ngFor='let branch of branchesList.data;' [ngValue]='branch.branch_id'>{{branch.branch_name}}</option>
+              </select>
+              
+            </div>
+          
+             
+          </div>
+            </form>
+            <div class="row">
+                <div class="col-3"><label>Attendance Id</label></div>
+                <div class="col-3"><label>Employee ID</label> </div>
+                <div class="col-3"><label>Employee Name</label></div>
+                <div class="col-3"><label>Status</label></div>
+              </div>
+              <div *ngFor='let emply of attendanceData.data'>
+        <form #employe="ngForm" (ngSubmit)="submit()" (change)="update(employe.value)">
+<!--           
+          <div class="row">
+            <div class="col-6 form-group">
+              <label for="exampleInputPassword1" class="label">Branch </label>
+             
+              <select nbInput class="custom-select" name="branch_name" (change)='selectList($event)' [(ngModel)]='listId' >
+                <option  disabled value="undefined">Select Branch</option>
+                <option *ngFor='let branch of branchesList.data;' [ngValue]='branch.branch_id'>{{branch.branch_name}}</option>
+              </select>
+              
+            </div>
+            <div>
+              <div class="col-6 form-group">
+                <label for="exampleInputPassword" class="label">Date</label> 
+                 <input type="date"  name="date" [ngModel]="curDate | date:'yyyy-MM-dd'"  >
+              </div>
+            </div>
+          </div> -->
+          <!-- <div class="row">
+          <div class="col-3 ">
+            <label for="exampleInputPassword" class="label">{{curDate | date:'yyyy/MM/dd'}}</label> 
+             <input type="date" type="hidden" name="date" [ngModel]="curDate | date:'yyyy-MM-dd'"  >
+          </div>
+          <div class="col-3 form-group">
+              <label for="exampleInputEmail1" class="label">IT </label>
+              <input type="text" type="hidden" name="field" [ngModel]="field"  >
+              
+          </div>
+          <div class="col-3 form-group">
+              <label for="exampleInputEmail1" class="label">Abdul </label>
+              <input type="text" type="hidden" name="name" [ngModel]="name" >
+          </div>
+          <div class="col-3 form-group">
+              <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                  <label class="custom-control-label" for="customSwitch1"></label>
+                </div>
+          </div>
+         </div> -->
+         <!-- <div class="row">
+            
+            <div class="col-3 form-group">
+              <label for="exampleInputPassword1" class="label">{{curDate | date:'yyyy/MM/dd'}}</label>
+              <input type="date" type="hidden" name="date" [ngModel]="curDate | date:'yyyy-MM-dd'"  >
+            
+            </div>
+            <div class="col-3 form-group">
+                <label for="exampleInputEmail1" class="label">CS </label>
+                <input type="text" type="hidden" name="field" [ngModel]="field" >
+                
+            </div>
+            <div class="col-3 form-group">
+                <label for="exampleInputEmail1" class="label">Naeem </label>
+                <input type="text" type="hidden" name="name" [ngModel]="name" >
+            </div>
+            <div class="col-3 form-group">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch2" checked>
+                    <label class="custom-control-label" for="customSwitch2"></label>
+                  </div>
+            </div>
+           </div> -->
+          
+           
+            <div class="row" name="address"  >
+            
+            <div class="col-3 form-group">
+              <label for="exampleInputPassword1" class="label">{{emply.attend_id}}</label>
+              <input type="text" type="hidden" name="attend_id" [(ngModel)]="emply.attend_id" >
+            
+            </div>
+            <div class="col-3 form-group">
+                <label for="exampleInputEmail1" class="label">{{emply.emp_id}} </label>
+                <input type="text" type="hidden" name="emp_id" [(ngModel)]="emply.emp_id" >
+                
+            </div>
+            <div class="col-3 form-group">
+                <label for="exampleInputEmail1" class="label"> {{emply.name}} </label>
+               
+            </div>
+            <!-- <fieldset>
+                <div class="col-3 form-group">
+                  <label class="radio-inline"><input type="radio" id="{{emply.emp_id}}" name="status{{emply.emp_id}}" ngModel="name" value="present" checked>present</label>
+                  <label class="radio-inline"><input type="radio" id="{{emply.emp_id}}" name="status{{emply.emp_id}}" ngModel="name" value="absent">absent</label>
+               
+                </div>
+              </fieldset> -->
+              
+              <div class="col-3 form-group">
+                  
+                  <select nbInput class="custom-select" name="status"   [(ngModel)]="emply.status">
+                    <option disabled value="">Select Status</option>
+                    <option  *ngFor="let pay of status">{{pay}}</option>
+                  </select>
+                  <!-- <button class=" mb-2" nbButton status="success">{{emply.status}}</button> -->
+                </div>
+             
+             
+           </div>
+
+           
+        </form>
+              </div>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  </div>
+  Submitted Object:
+  {{formValue|json}}
+  <!-- =====table===== -->
+

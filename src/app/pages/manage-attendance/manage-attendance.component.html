@@ -1,0 +1,218 @@
+<button class=" mb-2" nbButton status="success" (click)='visiable()'>+Attendance</button>
+<!--  -->
+<div class="row animated fadeIn" *ngIf='!isCollapsed'>
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Attendance</nb-card-header>
+      <nb-card-body>
+
+        <form #emp="ngForm">
+
+          <div class="row">
+            <div class="col-6 form-group">
+              <label for="exampleInputPassword1" class="label">Branch </label>
+
+              <select nbInput class="custom-select" name="branch_name" data-live-search="true"
+                (change)='selectList($event)' [(ngModel)]='listId'>
+                <option disabled value="undefined">Select Branch</option>
+                <option *ngFor='let branch of branchesList.data;' [ngValue]='branch.branch_id'>{{branch.branch_name}}
+                </option>
+              </select>
+
+            </div>
+
+            <div class="col-6 form-group">
+              <label for="exampleInputPassword1" class="label">Date</label>
+              <div class="input-group">
+                <input nbInput fullWidth type="date" name="date" (change)="selectDate($event)"
+                  [ngModel]="curDate | date:'yyyy-MM-dd'">
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+<!-- =====table===== -->
+
+<nb-card>
+  <nb-card-body>
+
+
+    <div class="row headings">
+
+      <div class="col-2"><label>Sr#</label></div>
+      <div class="col-2"><label>Name</label> </div>
+      <div class="col-2"><label>Status</label></div>
+      <div class="col-2"><label>Check-In</label></div>
+      <div class="col-2"><label>Check-Out</label></div>
+      
+    </div>
+
+    <form #employe="ngForm" (ngSubmit)="onClickSubmit(employe)">
+      <table class="table table-striped">
+        <!--           
+          <div class="row">
+            <div class="col-6 form-group">
+              <label for="exampleInputPassword1" class="label">Branch </label>
+             
+              <select nbInput class="custom-select" name="branch_name" (change)='selectList($event)' [(ngModel)]='listId' >
+                <option  disabled value="undefined">Select Branch</option>
+                <option *ngFor='let branch of branchesList.data;' [ngValue]='branch.branch_id'>{{branch.branch_name}}</option>
+              </select>
+              
+            </div>
+            <div>
+              <div class="col-6 form-group">
+                <label for="exampleInputPassword" class="label">Date</label> 
+                 <input type="date"  name="date" [ngModel]="curDate | date:'yyyy-MM-dd'"  >
+              </div>
+            </div>
+          </div> -->
+        <!-- <div class="row">
+          <div class="col-3 ">
+            <label for="exampleInputPassword" class="label">{{curDate | date:'yyyy/MM/dd'}}</label> 
+             <input type="date" type="hidden" name="date" [ngModel]="curDate | date:'yyyy-MM-dd'"  >
+          </div>
+          <div class="col-3 form-group">
+              <label for="exampleInputEmail1" class="label">IT </label>
+              <input type="text" type="hidden" name="field" [ngModel]="field"  >
+              
+          </div>
+          <div class="col-3 form-group">
+              <label for="exampleInputEmail1" class="label">Abdul </label>
+              <input type="text" type="hidden" name="name" [ngModel]="name" >
+          </div>
+          <div class="col-3 form-group">
+              <div class="custom-control custom-switch">
+                  <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                  <label class="custom-control-label" for="customSwitch1"></label>
+                </div>
+          </div>
+         </div> -->
+        <!-- <div class="row">
+            
+            <div class="col-3 form-group">
+              <label for="exampleInputPassword1" class="label">{{curDate | date:'yyyy/MM/dd'}}</label>
+              <input type="date" type="hidden" name="date" [ngModel]="curDate | date:'yyyy-MM-dd'"  >
+            
+            </div>
+            <div class="col-3 form-group">
+                <label for="exampleInputEmail1" class="label">CS </label>
+                <input type="text" type="hidden" name="field" [ngModel]="field" >
+                
+            </div>
+            <div class="col-3 form-group">
+                <label for="exampleInputEmail1" class="label">Naeem </label>
+                <input type="text" type="hidden" name="name" [ngModel]="name" >
+            </div>
+            <div class="col-3 form-group">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch2" checked>
+                    <label class="custom-control-label" for="customSwitch2"></label>
+                  </div>
+            </div>
+           </div> -->
+
+
+        <div class="row singleRecord" name="address" *ngFor='let emply of attendanceData.data; index as i'
+          [ngModelGroup]="i">
+
+          <!-- <div class="col-3 form-group">
+              <label for="exampleInputPassword1" class="label">{{dated | date:'yyyy/MM/dd'}}</label>
+          
+            
+            </div> -->
+          <div class="col-2 form-group fieldRow">
+            <label for="exampleInputPassword1" class="label">1</label>
+
+
+          </div>
+          <!-- <div class="col-3 form-group">
+                <label for="exampleInputEmail1" class="label">{{emply.emp_id}} </label>
+                <input type="text" type="hidden" name="emp_id" [(ngModel)]="emply.emp_id" >
+                
+            </div> -->
+          <div class="col-2 form-group fieldRow">
+            <label for="exampleInputEmail1" class="label"> {{emply.name}} </label>
+
+          </div>
+
+          <!-- <fieldset>
+                <div class="col-3 form-group">
+                  <label class="radio-inline"><input type="radio" id="{{emply.emp_id}}" name="status{{emply.emp_id}}" ngModel="name" value="present" checked>present</label>
+                  <label class="radio-inline"><input type="radio" id="{{emply.emp_id}}" name="status{{emply.emp_id}}" ngModel="name" value="absent">absent</label>
+               
+                </div>
+              </fieldset> -->
+          <div class="col-2 form-group fieldRow">
+
+            <select nbInput class="custom-select " data-live-search="true" #ali="ngModel" name="status" ngModel>
+              <option disabled value="">Select Status</option>
+              <option *ngFor="let pay of status">{{pay}}</option>
+            </select>
+
+          </div>
+
+          <div class="col-2 form-group fieldRow" *ngIf="ali.value=='present'">
+            <input type="time" id="inputMDEx1" name="check-out" class="form-control" [ngModel]="currTime">
+          </div>
+          <div class="col-2 form-group fieldRow" *ngIf="ali.value=='present'">
+            <input type="time" id="inputMDEx1" name="Check-In" class="form-control " [ngModel]="currTime ">
+
+          </div>
+          <div class="col-2 form-group fieldRow" *ngIf="ali.value=='absent'">
+            <input type="time" id="inputMDEx1" type="hidden" name="check-out" class="form-control" ngModel>
+
+          </div>
+          <div class="col-2 form-group fieldRow" *ngIf="ali.value=='absent'">
+            <input type="time" id="inputMDEx1" type="hidden" name="Check-In" class="form-control " ngModel>
+
+          </div>
+          <div class="col-2 form-group fieldRow" *ngIf="ali.value=='leave'">
+            <input type="time" id="inputMDEx1" type="hidden" name="check-out" class="form-control" ngModel>
+
+          </div>
+          <div class="col-2 form-group fieldRow" *ngIf="ali.value=='leave'">
+            <input type="time" id="inputMDEx1" type="hidden" name="Check-In" class="form-control " ngModel>
+
+          </div> 
+          <div *ngFor='let ar of ids'>
+            <div *ngIf='emply.emp_id==ar' >
+            <div class="row" *ngFor='let i of Arr(num).fill(1)'>
+                <div class="col-6 form-group fieldRow" >
+                    <input type="time" id="inputMDEx1" name="check-out" class="form-control" [ngModel]="currTime">
+                  </div>
+                  <div class="col-6 form-group fieldRow" >
+                    <input type="time" id="inputMDEx1" name="Check-In" class="form-control " [ngModel]="currTime">
+        
+                  </div>
+
+
+
+    </div>
+                </div> 
+            </div>
+          <!--abdulrehman-->
+          <div class="col-2 form-group fieldRow">
+            <button class="btn btn-warning" (click)='my(emply.emp_id)'>add</button>
+          </div>
+
+        </div>
+
+
+        <div class="buttons">
+
+          <button type="submit" nbButton status="danger" style="float: right;" (click)="hide()">Cancel</button>
+          <button type="submit" class=" mr-2" nbButton status="success" style="float:right">Submit</button>
+        </div>
+      </table>
+    </form>
+
+  </nb-card-body>
+</nb-card>
+

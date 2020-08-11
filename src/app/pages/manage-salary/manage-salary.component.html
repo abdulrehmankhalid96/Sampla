@@ -1,0 +1,422 @@
+<button class="btn btn-warning mb-2" (click)='visiable()'>+Add Employe</button>
+<div class="animated fadeIn" *ngIf='!isCollapsed'>
+<form #employe="ngForm" (ngSubmit)="onClickSubmit(employe.value)">
+<div class="row">
+<div class="col-sm-12">
+<div class="card">
+
+<div class="card-header">
+<strong>Employee</strong>
+<small>Form</small>
+</div>
+          
+<div class="card-body">
+<div class="row">
+<div class="form-group col-md-4">
+<label class=" control-label ">Date:</label>
+<div class=" inputGroupContainer">
+<div class="input-group"><span class="input-group-addon">
+  <i class="glyphicon glyphicon-user"></i></span><input id="Date" name="Date" placeholder="Date"
+                      class="form-control" required="true" value="" type="date" ngModel></div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label class=" control-label">Employee First name</label>
+                <div class=" inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-home"></i></span><input id="firstname" name="firstname"
+                      placeholder="First Name" class="form-control" required="true" value="" type="text" ngModel></div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label class=" control-label">Employee Last name</label>
+                <div class=" inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-home"></i></span><input id="last name" name="lastname"
+                      placeholder="Last name" class="form-control" required="true" value="" type="text" ngModel></div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label class=" control-label">SIN No:</label>
+                <div class="inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-home"></i></span><input id="SIN" name="SIN" placeholder="SIN No"
+                      class="form-control" required="true" value="" type="number" ngModel></div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label class="control-label">Full Address</label>
+                <div class=" inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-home"></i></span><input id="Address" name="Address"
+                      placeholder="State/Province/Region" class="form-control" required="true" value="" type="text"
+                      ngModel>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label class=" control-label">Pay Type</label>
+                <div class=" inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-home"></i></span>
+                    <select class="custom-select" (change)="selectChangeHandler($event)">
+                      <option selected>Pay Type</option>
+                      <option *ngFor='let py of pay'>{{py}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/.row-->
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label class=" control-label">Phone Number</label>
+                <div class=" inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-earphone"></i></span><input id="phoneNumber" name="phoneNumber"
+                      placeholder="Phone Number" class="form-control" required="true" value="" type="tel" ngModel></div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label class=" control-label">Employee No</label>
+                <div class=" inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-earphone"></i></span><input id="Employee No" name="EmployeeNo"
+                      placeholder="Employee No" class="form-control" required="true" value="" type="number" ngModel>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label class=" control-label">Employee Category</label>
+                <div class="inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-earphone"></i></span>
+                    <select class="custom-select" (change)="selectChange($event)">
+                      <option selected>Employee Catagorey</option>
+                      <option *ngFor='let catagory of catagorey'>{{catagory}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label class=" control-label">Sales Incentive</label>
+                <div class=" inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-earphone"></i></span><input id="Incentive" name="Incentive"
+                      placeholder="Incentive" class="form-control" required="true" value="" type="text" ngModel></div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label class=" control-label">Collector license No</label>
+                <div class=" inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-earphone"></i></span><input id="license" name="license"
+                      placeholder="Collector license No" class="form-control" required="true" value="" type="text"
+                      ngModel>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label class=" control-label">Hourly Rate</label>
+                <div class=" inputGroupContainer">
+                  <div class="input-group">
+                    <span class="input-group-addon" style="max-width: 100%;"><i
+                        class="glyphicon glyphicon-list"></i></span>
+                    <input id=" Rate" name=" Rate" placeholder="Hourly Rate" class="form-control" required="true"
+                      type="number" ngModel>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="form-group col-md-4">
+                <label class=" control-label">Yearly Salary</label>
+                <div class=" inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-envelope"></i></span><input id="Yearly Salary" name="Yearly"
+                      placeholder="Yearly Salary" class="form-control" required="true" value="" type="number" ngModel>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label class=" control-label">File Closed status</label>
+                <div class=" inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-earphone"></i></span><input id="fileStatus" name="fileStatus"
+                      placeholder="File Status " class="form-control" required="true" value="" type="text" ngModel>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label class=" control-label">List of Files Assigned</label>
+                <div class=" inputGroupContainer">
+                  <div class="input-group"><span class="input-group-addon"><i
+                        class="glyphicon glyphicon-earphone"></i></span><input id="fileList" name="fileList"
+                      placeholder="List of Files Assigned" class="form-control" required="true" value="" type="number"
+                      ngModel></div>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <button class="btn btn-secondary" style="float: right;" (click)="hide()">Cancel</button>
+                <button class="btn btn-success mr-2" type="submit" style="float:right">Submitt!</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/.col-->
+    </div>
+    <!--/.row-->
+  </form>
+</div>
+<div class="animated fadeIn" *ngIf='!isCollapsed'>
+  <form #employe="ngForm" (ngSubmit)="onClickSubmit(employe.value)">
+  <div class="row">
+  <div class="col-sm-12">
+  <div class="card">
+  
+  <div class="card-header">
+  <strong>Employee</strong>
+  <small>Form</small>
+  </div>
+            
+  <div class="card-body">
+  <div class="row">
+  <div class="form-group col-md-4">
+  <label class=" control-label ">Date:</label>
+  <div class=" inputGroupContainer">
+  <div class="input-group"><span class="input-group-addon">
+    <i class="glyphicon glyphicon-user"></i></span><input id="Date" name="Date" placeholder="Date"
+                        class="form-control" required="true" value="" type="date" ngModel></div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label class=" control-label">Employee First name</label>
+                  <div class=" inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-home"></i></span><input id="firstname" name="firstname"
+                        placeholder="First Name" class="form-control" required="true" value="" type="text" ngModel></div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label class=" control-label">Employee Last name</label>
+                  <div class=" inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-home"></i></span><input id="last name" name="lastname"
+                        placeholder="Last name" class="form-control" required="true" value="" type="text" ngModel></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label class=" control-label">SIN No:</label>
+                  <div class="inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-home"></i></span><input id="SIN" name="SIN" placeholder="SIN No"
+                        class="form-control" required="true" value="" type="number" ngModel></div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label class="control-label">Full Address</label>
+                  <div class=" inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-home"></i></span><input id="Address" name="Address"
+                        placeholder="State/Province/Region" class="form-control" required="true" value="" type="text"
+                        ngModel>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label class=" control-label">Pay Type</label>
+                  <div class=" inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-home"></i></span>
+                      <select class="custom-select" (change)="selectChangeHandler($event)">
+                        <option selected>Pay Type</option>
+                        <option *ngFor='let py of pay'>{{py}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--/.row-->
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label class=" control-label">Phone Number</label>
+                  <div class=" inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-earphone"></i></span><input id="phoneNumber" name="phoneNumber"
+                        placeholder="Phone Number" class="form-control" required="true" value="" type="tel" ngModel></div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label class=" control-label">Employee No</label>
+                  <div class=" inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-earphone"></i></span><input id="Employee No" name="EmployeeNo"
+                        placeholder="Employee No" class="form-control" required="true" value="" type="number" ngModel>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label class=" control-label">Employee Category</label>
+                  <div class="inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-earphone"></i></span>
+                      <select class="custom-select" (change)="selectChange($event)">
+                        <option selected>Employee Catagorey</option>
+                        <option *ngFor='let catagory of catagorey'>{{catagory}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label class=" control-label">Sales Incentive</label>
+                  <div class=" inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-earphone"></i></span><input id="Incentive" name="Incentive"
+                        placeholder="Incentive" class="form-control" required="true" value="" type="text" ngModel></div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label class=" control-label">Collector license No</label>
+                  <div class=" inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-earphone"></i></span><input id="license" name="license"
+                        placeholder="Collector license No" class="form-control" required="true" value="" type="text"
+                        ngModel>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label class=" control-label">Hourly Rate</label>
+                  <div class=" inputGroupContainer">
+                    <div class="input-group">
+                      <span class="input-group-addon" style="max-width: 100%;"><i
+                          class="glyphicon glyphicon-list"></i></span>
+                      <input id=" Rate" name=" Rate" placeholder="Hourly Rate" class="form-control" required="true"
+                        type="number" ngModel>
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+              <div class="row">
+                <div class="form-group col-md-4">
+                  <label class=" control-label">Yearly Salary</label>
+                  <div class=" inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-envelope"></i></span><input id="Yearly Salary" name="Yearly"
+                        placeholder="Yearly Salary" class="form-control" required="true" value="" type="number" ngModel>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group col-md-4">
+                  <label class=" control-label">File Closed status</label>
+                  <div class=" inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-earphone"></i></span><input id="fileStatus" name="fileStatus"
+                        placeholder="File Status " class="form-control" required="true" value="" type="text" ngModel>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label class=" control-label">List of Files Assigned</label>
+                  <div class=" inputGroupContainer">
+                    <div class="input-group"><span class="input-group-addon"><i
+                          class="glyphicon glyphicon-earphone"></i></span><input id="fileList" name="fileList"
+                        placeholder="List of Files Assigned" class="form-control" required="true" value="" type="number"
+                        ngModel></div>
+                  </div>
+                </div>
+  
+  
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button class="btn btn-secondary" style="float: right;" (click)="hide()">Cancel</button>
+                  <button class="btn btn-success mr-2" type="submit" style="float:right">Submitt!</button>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/.col-->
+      </div>
+      <!--/.row-->
+    </form>
+  </div>
+<!--/.Table -->
+<div class="animated fadeIn ">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i><a> Simple Table</a>
+          <div class="search-hero col-md-12" style="float: right; width: 250px;">
+
+            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+              placeholder=" Searching for Employee">
+          </div>
+        </div>
+        <div class="row">
+
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Employee Name </th>
+                <th>SIN No</th>
+                <th>Address</th>
+                <th>Pay Type</th>
+                <th>Hourly Rate</th>
+                <th>Yearly Salary</th>
+                <th>Phone Number</th>
+                <th>Employee Category</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let emply of empt.data| filter:searchText | paginate: { itemsPerPage: 3, currentPage: p }'>
+                <td>{{emply.first_name}}</td>
+                <td>{{emply.last_name}}</td>
+                <td>{{emply.address}}</td>
+                <td>{{emply.pay_type}}</td>
+                <td>{{emply.hourly_rate}}</td>
+                <td>{{emply.yearly_salary}}</td>
+                <td>{{emply.phone_number}}</td>
+                <td>{{emply.employee_category}}</td>
+
+              </tr>
+
+
+
+
+            </tbody>
+          </table>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+
+    <!--/.col-->
+  </div>
+</div>

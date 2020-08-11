@@ -1,0 +1,247 @@
+
+
+     <!-- employe mangement -->
+
+<button class=" mb-2" nbButton status="success" (click)='visiable()'>+Add Employee</button>
+<div class="row animated fadeIn" *ngIf='!isCollapsed'>
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-header>Branches</nb-card-header>
+      <nb-card-body>
+          <form #employe="ngForm" (ngSubmit)="onClickSubmit(employe.value)">
+          <div class="row">
+            
+          <div class="col-6 form-group">
+            <label for="exampleInputPassword1" class="label">Branch </label>
+           
+            <select nbInput class="custom-select" data-live-search="true" name="branch_name" [(ngModel)]='listId' >
+              <option  disabled value="undefined">Select Branch</option>
+              <option *ngFor='let branch of branchesList.data;' [ngValue]='branch.branch_id'>{{branch.branch_name}}</option>
+            </select>
+            
+          </div>
+          <div class="col-6 form-group">
+              <label for="exampleInputEmail1" class="label">Full Name</label>
+              <input type="text" nbInput fullWidth name="name" id="Name" placeholder="Full Name" ngModel>
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-6 form-group">
+                <label for="exampleInputEmail1" class="label">Employee Number </label>
+                <input type="number" nbInput name="emp_number" fullWidth id="employeNumber" placeholder="Employee Number" ngModel>
+              </div>
+            <div class="col-6 form-group">
+                <label for="exampleInputPassword1" class="label">Email</label>
+                <input type="text" nbInput fullWidth name="email" id="email" placeholder="Email" ngModel>
+              </div>
+             
+           
+         </div>
+         <div class="row">
+            <div class="col-6 form-group">
+                <label for="exampleInputPassword1" class="label">Phone No:</label>
+                <input type="tel" nbInput fullWidth name="phone" id="Phone" placeholder="Phone Number" ngModel>
+              </div>
+              <div class="col-6 form-group">
+                <label for="exampleInputPassword1" class="label">Address</label>
+                <input type="text" nbInput fullWidth name="address" id="Address" placeholder="Address" ngModel (change)='selectpay($event)'>
+              </div>
+              
+             
+
+         </div>
+         <div class="row">
+            <div class="col-6 form-group">
+                <label for="exampleInputPassword1" class="label">Pay-Type</label>
+                <select nbInput class="custom-select" #ali="ngModel" name="pay_type" ngModel>
+                  <option disabled value="">Select Pay Type</option>
+                  <option *ngFor="let pay of payType">{{pay}}</option>
+                </select>
+              </div>
+            
+            <div class="col-6 form-group" *ngIf="ali.value=='Hourly'"> 
+              <label for="exampleInputPassword1" class="label">Hourly Rate</label>
+              <input type="number" [disabled]="run" nbInput fullWidth name="hourly_rate" id="Hourly" placeholder=" Hourly Rate" ngModel>
+            </div>
+            <div class="col-6 form-group" *ngIf="ali.value=='Full'">
+                <label for="exampleInputEmail1" class="label">Monthly Salary</label>
+                <input type="number" nbInput fullWidth name="monthly_salary" id="yearlySalary" placeholder="Monthly Salary" ngModel>
+              </div>
+           </div>
+           <div class="row">
+            
+              <!-- <div class="col-6 form-group">
+                <label for="exampleInputPassword1" class="label">Phone No:</label>
+                <input type="tel" nbInput fullWidth name="phone" id="Phone" placeholder="Phone Number" ngModel>
+              </div> -->
+              
+                <div class="col-6 form-group">
+                    <label for="exampleInputPassword1" class="label">Role</label>
+                    <select nbInput class="custom-select" name="role" ngModel>
+                      <option nbInput disabled value="">Select Role</option>
+                      <option *ngFor="let role of roleType">{{role}}</option>
+                    </select>
+                  </div>
+             </div>
+             <!-- <div class="row">
+            
+               
+                
+               </div> -->
+
+               <button type="submit" nbButton status="danger"  style="float: right;" (click)="hide()">Cancel</button>
+               <button type="submit" class=" mr-2" nbButton status="success" style="float:right" >Submit</button>
+            
+        </form>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+  </div>
+
+  <!-- update -->
+  <div class="row animated fadeIn" *ngIf='!Collapsed'>
+      <div class="col-md-12">
+        <nb-card>
+          <nb-card-header>Branches</nb-card-header>
+          <nb-card-body>
+              <form #employe="ngForm" (ngSubmit)="updateFun(employe.value)">
+              <div class="row">
+                
+                <div class="col-6 form-group">
+                  <label for="exampleInputPassword1" class="label">Branch </label>
+                 
+                  <select nbInput class="custom-select" name="branch_id" [(ngModel)]='edit.branch_id' >
+                    <option  disabled value="undefined">Select Branch</option>
+                    <option *ngFor='let branch of branchesList.data;' [ngValue]='branch.branch_id'>{{branch.branch_name}}</option>
+                  </select>
+                  
+                </div>
+              <div class="col-6 form-group">
+                  <label for="exampleInputEmail1" class="label">Full Name</label>
+                  <input type="text" nbInput fullWidth name="name" id="Name" placeholder="Full Name" [(ngModel)]="edit.name">
+                </div>
+             </div>
+             <div class="row">
+                <div class="col-6 form-group">
+                    <label for="exampleInputEmail1" class="label">Employee Number </label>
+                    <input type="number" nbInput name="emp_number" fullWidth id="employeNumber" placeholder="Employee Number" [(ngModel)]="edit.emp_number">
+                  </div>
+                <div class="col-6 form-group">
+                    <label for="exampleInputPassword1" class="label">Email</label>
+                    <input type="text" nbInput fullWidth name="email" id="email" placeholder="Email" [(ngModel)]="edit.email">
+                  </div>
+                  
+               
+             </div>
+             <div class="row">
+                <div class="col-6 form-group">
+                    <label for="exampleInputPassword1" class="label">Phone No:</label>
+                    <input type="tel" nbInput fullWidth name="phone" id="Phone" placeholder="Phone Number" [(ngModel)]="edit.phone">
+                  </div>
+                  <div class="col-6 form-group">
+                    <label for="exampleInputPassword1" class="label">Address</label>
+                    <input type="text" nbInput fullWidth name="address" id="Address" placeholder="Address" [(ngModel)]="edit.address">
+                  </div>
+                  
+                 
+    
+             </div>
+             <div class="row">
+                <div class="col-6 form-group">
+                    <label for="exampleInputPassword1" class="label">Pay-Type</label>
+                    <select nbInput  class="custom-select" name="pay_type" [(ngModel)]="edit.pay_type">
+                      <option disabled value="">Select Pay Type</option>
+                      <option *ngFor="let pay of payType">{{pay}}</option>
+                    </select>
+                  </div>
+                
+                <div class="col-6 form-group"  >
+                  <label for="exampleInputPassword1" class="label">Hourly Rate</label>
+                  <input type="number" nbInput fullWidth name="hourly_rate" id="Hourly" placeholder="Hourly Rate" [(ngModel)]="edit.hourly_rate">
+                </div>
+                <div class="col-6 form-group" >
+                    <label for="exampleInputEmail1" class="label">Monthly Salary</label>
+                    <input type="number" nbInput fullWidth name="monthly_salary" id="monthly_salary" placeholder="Monthly Salary" [(ngModel)]="edit.monthly_salary">
+                  </div>
+               </div>
+               <div class="row">
+                
+                  
+                  
+                    <div class="col-6 form-group">
+                        <label for="exampleInputPassword1" class="label">Role</label>
+                        <select nbInput class="custom-select" name="role" [(ngModel)]="edit.role">
+                          <option nbInput disabled value="">Select Role</option>
+                          <option *ngFor="let role of roleType">{{role}}</option>
+                        </select>
+                      </div>
+                 </div>
+                 
+    
+                   <button type="submit" nbButton status="danger"  style="float: right;" (click)="hide()">Cancel</button>
+                   <button type="submit" class=" mr-2" nbButton status="success" style="float:right" >Update</button>
+            </form>
+          </nb-card-body>
+        </nb-card>
+      </div>
+      </div>
+  <!-- =====table===== -->
+  <nb-card>
+      <nb-card-body>
+        <div class="row justify-content-between">
+          <div class="col-3">
+          <label class="search-label" for="search">Search:</label>
+          <input nbInput id="search" [(ngModel)]="searchText" class="search-input">
+        </div>
+        
+        <div class="col-2 align-self-center">
+          <select nbInput class="custom-select" (change)="selectitem($event)" >
+              <option  selected>3</option>
+              <option *ngFor="let item of selectItem">{{item}}</option>
+            </select>
+            </div>
+            </div>
+          <table  class="table">
+              <thead>
+                <tr>
+                  <th >Sr#No</th>
+                  <th >Name</th>
+                  <th> Email</th>
+                  <th >Address</th>
+                  <!-- <th>Pay Type</th> -->
+                  <th >Hourly Rate</th>
+                  <th >Yearly Salary</th>
+                  <th >Phone No</th>
+                  <th >Employee No</th>
+                  <th >role</th>
+                  <th>Action</th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                
+                <tr *ngFor='let emply of data.data| filter:searchText | paginate: { itemsPerPage: itemNo, currentPage: p };let i = index'>
+                  
+                  <td >{{i+1}}</td>
+                  <td>{{emply.name}}</td>
+                  <td>{{emply.email}}</td>
+                  <td>{{emply.address}}</td>
+                  <td>{{emply.hourly_rate}}</td>
+                  <td>{{emply.monthly_salary}}</td>
+                  <td>{{emply.phone}}</td>
+                  <td>{{emply.emp_number}}</td>
+                  <td>{{emply.role}}</td>
+                  <td ><a><i (click)='onEdit(emply)' class="fas fa-edit mr-2"></i></a><a><i class="fas fa-trash-alt mr-3" (click)='delete_fun(emply.emp_id)'></i></a></td>               
+
+                </tr>
+                
+                
+              </tbody>
+              
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            
+      </nb-card-body>
+      
+    </nb-card>

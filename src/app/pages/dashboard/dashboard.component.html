@@ -1,0 +1,23 @@
+<form #userForm="ngForm"  (ngSubmit)="onSubmit(userForm.value)" novalidate>
+    
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text"  required class="form-control"  name="name" [(ngModel)]="usermodel.name">
+   
+  </div>
+
+
+  <div class="form-group">
+    <select class="custom-select"  name="topic" [ngModel]="usermodel.topic">
+      <option value="">I am interested in</option>
+      <option *ngFor="let topic of topics">{{ topic }}</option>
+    </select>
+        
+  </div>
+
+ 
+
+
+  <button class="btn btn-primary"  type="submit">Submit form</button>
+
+</form>
